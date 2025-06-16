@@ -1,0 +1,17 @@
+{
+  "Title": "Practical DataOps",
+  "Status": "Not started",
+  "Pages": 275,
+  "Progress": 0,
+  "Started On": "",
+  "Finished On": "",
+  "Author": [
+    "Harvinder Atwal"
+  ],
+  "Collection": "",
+  "Genre": "",
+  "Format": "Physical",
+  "ISBN": "9781484251034",
+  "Cover": "http://books.google.com/books/content?id=hTwnxgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "Summary": "Gain a practical introduction to DataOps, a new discipline for delivering data science at scale inspired by practices at companies such as Facebook, Uber, LinkedIn, Twitter, and eBay. Organizations need more than the latest AI algorithms, hottest tools, and best people to turn data into insight-driven action and useful analytical data products. Processes and thinking employed to manage and use data in the 20th century are a bottleneck for working effectively with the variety of data and advanced analytical use cases that organizations have today. This book provides the approach and methods to ensure continuous rapid use of data to create analytical data products and steer decision making. Practical DataOps shows you how to optimize the data supply chain from diverse raw data sources to the final data product, whether the goal is a machine learning model or other data-orientated output. The book provides an approach to eliminate wasted effort and improve collaboration between data producers, data consumers, and the rest of the organization through the adoption of lean thinking and agile software development principles. This book helps you to improve the speed and accuracy of analytical application development through data management and DevOps practices that securely expand data access, and rapidly increase the number of reproducible data products through automation, testing, and integration. The book also shows how to collect feedback and monitor performance to manage and continuously improve your processes and output. What You Will Learn Develop a data strategy for your organization to help it reach its long-term goals Recognize and eliminate barriers to delivering data to users at scale Work on the right things for the right stakeholders through agile collaboration Create trust in data via rigorous testing and effective data management Build a culture of learning and continuous improvement through monitoring deployments and measuring outcomes Create cross-functional self-organizing teams focused on goals not reporting lines Build robust, trustworthy, data pipelines in support of AI, machine learning, and other analytical data products Who This Book Is For Data science and advanced analytics experts, CIOs, CDOs (chief data officers), chief analytics officers, business analysts, business team leaders, and IT professionals (data engineers, developers, architects, and DBAs) supporting data teams who want to dramatically increase the value their organization derives from data. The book is ideal for data professionals who want to overcome challenges of long delivery time, poor data quality, high maintenance costs, and scaling difficulties in getting data science output and machine learning into customer-facing production."
+}

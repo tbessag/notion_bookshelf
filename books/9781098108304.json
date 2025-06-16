@@ -1,0 +1,18 @@
+{
+  "Title": "Fundamentals of Data Engineering",
+  "Status": "Not started",
+  "Pages": 400,
+  "Progress": 0,
+  "Started On": "",
+  "Finished On": "",
+  "Author": [
+    "Joe Reis",
+    "Matt Housley"
+  ],
+  "Collection": "",
+  "Genre": "",
+  "Format": "Physical",
+  "ISBN": "9781098108304",
+  "Cover": "http://books.google.com/books/content?id=Z_TFzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "Summary": "Data engineering has grown rapidly in the past decade, leaving many software engineers, data scientists, and analysts looking for a comprehensive view of this practice. With this practical book, you'll learn how to plan and build systems to serve the needs of your organization and customers by evaluating the best technologies available in the framework of the data engineering lifecycle. Authors Joe Reis and Matt Housley walk you through the data engineering lifecycle and show you how to stitch together a variety of cloud technologies to serve the needs of downstream data consumers. You'll understand how to apply the concepts of data generation, ingestion, orchestration, transformation, storage, governance, and deployment that are critical in any data environment regardless of the underlying technology. This book will help you: Assess data engineering problems using an end-to-end data framework of best practices Cut through marketing hype when choosing data technologies, architecture, and processes Use the data engineering lifecycle to design and build a robust architecture Incorporate data governance and security across the data engineering lifecycle"
+}
