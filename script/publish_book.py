@@ -10,7 +10,7 @@ load_dotenv()
 NOTION_TOKEN     = os.getenv("NOTION_API_TOKEN")
 DATABASE_ID      = os.getenv("NOTION_DATABASE_ID")
 TEMPLATE_PAGE_ID = os.getenv("AUTO_BOOK_TEMPLATE_ID")
-GITHUB_RAW       = os.getenv("GITHUB_RAW")
+GITHUB_RAW       = os.getenv("PATH_GITHUB_RAW")
 notion           = Client(auth=NOTION_TOKEN)
 
 # ─── Directories ──────────────────────────────────────────
