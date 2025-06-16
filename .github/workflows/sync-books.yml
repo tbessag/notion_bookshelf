@@ -56,3 +56,21 @@ jobs:
         run: |
           echo "Processed books in books/processed_books/:"
           ls books/processed_books | wc -l
+
+      # 8) Commit & push any file changes back to the repo
+      - name: Commit & Push changes
+        if: ${{ always() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add isbn_input.json books/new_books books/processed_books
+          # Only commit if there are changes
+          if ! git diff --cached --exit-code; then
+            git commit -m "chore: persist updated ISBN input and processed lists"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
