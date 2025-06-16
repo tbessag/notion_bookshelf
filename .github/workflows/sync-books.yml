@@ -1,28 +1,49 @@
-# .github/workflows/sync-books.yml
 name: Sync Books
 
 on:
   workflow_dispatch:
     inputs:
       isbn:
-        description: 'ISBN to add'
+        description: 'Comma-separated ISBNs to add'
         required: true
         default: ''
 
 jobs:
-  add-fetch-publish:
+  sync:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out
-        uses: actions/checkout@v4
+      # 1) Check out your code
+      - uses: actions/checkout@v4
 
-      - name: Write isbn_input.json
+      # 2) Set up Python 3.x
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # 3) Install deps
+      - name: Install dependencies
         run: |
-          jq -n --arg i "${{ github.event.inputs.isbn }}" \
-             '{isbn: [$i] | map(split(",")[]) }' > isbn_input.json
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Fetch metadata & covers
-        run: python scripts/fetch_and_save.py
+      # 4) Write isbn_input.json at repo root
+      - name: Generate isbn_input.json
+        run: |
+          echo "{ \"isbn\": [${{ github.event.inputs.isbn
+            // split on commas, wrap each in quotes
+            | split(\",\") | map(\"\\\"\" + . + \"\\\"\") | join(\",\") }}] }" \
+            > isbn_input.json
+          cat isbn_input.json
 
-      - name: Publish to Notion
-        run: python scripts/publish_and_move.py
+      # 5) Fetch metadata & covers → books/new_books/ & books/covers/
+      - name: Fetch metadata & download covers
+        run: python script/isbn_to_book_json.py
+
+      # 6) Publish new books → Notion & move JSON to processed_books/
+      - name: Publish to Notion and archive
+        run: python script/publish_book.py
+
+      # 7) (Optional) Show processed count
+      - name: List processed
+        run: ls -1 books/processed_books | wc -l
