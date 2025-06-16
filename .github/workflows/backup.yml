@@ -1,6 +1,7 @@
 name: Daily Notion Backup
 
 on:
+  workflow_dispatch:
   schedule:
     # every day at 02:00 UTC
     - cron: '0 2 * * *'
