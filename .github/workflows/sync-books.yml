@@ -13,14 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Check out your code
+      # 1) Check out the repo without default credentials (we’ll use PAT)
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          persist-credentials: false
 
       # 2) Set up Python
-      - uses: actions/setup-python@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
@@ -30,19 +31,17 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4) Generate isbn_input.json at repo root
+      # 4) Generate isbn_input.json at the repo root
       - name: Generate isbn_input.json
         run: |
-          # Split the input on commas
+          # split on commas, wrap each in quotes
           IFS=',' read -ra ISBN_ARRAY <<< "${{ github.event.inputs.isbn }}"
-          # Start the JSON
           printf '{ "isbn": [' > isbn_input.json
-          # Append each ISBN, trimmed of whitespace
           for isbn in "${ISBN_ARRAY[@]}"; do
             clean=$(echo "$isbn" | xargs)
             printf "\"%s\"," "$clean"
           done >> isbn_input.json
-          # Close the array, removing trailing comma
+          # remove trailing comma, close array
           sed -i 's/,$/ ] }/' isbn_input.json
           cat isbn_input.json
 
@@ -54,13 +53,13 @@ jobs:
       - name: Publish to Notion and archive
         run: python script/publish_book.py
 
-      # 7) List how many have been processed
+      # 7) List how many books have been processed
       - name: List processed count
         run: |
           echo "Processed books in books/processed_books/:"
           ls books/processed_books | wc -l
 
-      # 8) Commit & push any file changes back to the repo
+      # 8) Commit & Push any changes back to the repo using your PAT
       - name: Commit & Push changes
         if: ${{ always() }}
         run: |
@@ -71,8 +70,5 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore: persist updated ISBN input and processed lists"
-            # Push via PAT instead of GITHUB_TOKEN
             git push https://x-access-token:${{ secrets.REPO_PAT }}@github.com/${{ github.repository }} HEAD:main
           fi
-
-
