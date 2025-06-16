@@ -14,9 +14,9 @@ jobs:
 
     steps:
       # 1) Check out your code
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          # this is the key bit that allows pushing via GITHUB_TOKEN
           persist-credentials: true
 
       # 2) Set up Python
@@ -67,7 +67,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add isbn_input.json books/new_books books/processed_books
-          # Only commit if there are changes
           if ! git diff --cached --exit-code; then
             git commit -m "chore: persist updated ISBN input and processed lists"
             git push
