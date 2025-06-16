@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       isbn:
-        description: 'Comma-separated ISBNs to add'
+        description: 'Comma-separated ISBNs to add (e.g. 9781234567890,9780987654321)'
         required: true
         default: ''
 
@@ -16,34 +16,43 @@ jobs:
       # 1) Check out your code
       - uses: actions/checkout@v4
 
-      # 2) Set up Python 3.x
+      # 2) Set up Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      # 3) Install deps
+      # 3) Install dependencies
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4) Write isbn_input.json at repo root
+      # 4) Generate isbn_input.json at repo root
       - name: Generate isbn_input.json
         run: |
-          echo "{ \"isbn\": [${{ github.event.inputs.isbn
-            // split on commas, wrap each in quotes
-            | split(\",\") | map(\"\\\"\" + . + \"\\\"\") | join(\",\") }}] }" \
-            > isbn_input.json
+          # Split the input on commas
+          IFS=',' read -ra ISBN_ARRAY <<< "${{ github.event.inputs.isbn }}"
+          # Start the JSON
+          printf '{ "isbn": [' > isbn_input.json
+          # Append each ISBN, trimmed of whitespace
+          for isbn in "${ISBN_ARRAY[@]}"; do
+            clean=$(echo "$isbn" | xargs)
+            printf "\"%s\"," "$clean"
+          done >> isbn_input.json
+          # Close the array, removing trailing comma
+          sed -i 's/,$/ ] }/' isbn_input.json
           cat isbn_input.json
 
-      # 5) Fetch metadata & covers → books/new_books/ & books/covers/
+      # 5) Fetch metadata & download covers into books/new_books/ & books/covers/
       - name: Fetch metadata & download covers
         run: python script/isbn_to_book_json.py
 
-      # 6) Publish new books → Notion & move JSON to processed_books/
+      # 6) Publish new books to Notion and move JSONs to books/processed_books/
       - name: Publish to Notion and archive
         run: python script/publish_book.py
 
-      # 7) (Optional) Show processed count
-      - name: List processed
-        run: ls -1 books/processed_books | wc -l
+      # 7) List how many have been processed
+      - name: List processed count
+        run: |
+          echo "Processed books in books/processed_books/:"
+          ls books/processed_books | wc -l
