@@ -1,0 +1,13 @@
+{
+  "Title": "DAMA-DMBOK",
+  "Status": "Not started",
+  "Pages": 628,
+  "Progress": 0,
+  "Author": [
+    "Dama International"
+  ],
+  "Format": "Physical",
+  "ISBN": "9781634622349",
+  "Cover": "http://books.google.com/books/content?id=YjacswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "Summary": "Defining a set of guiding principles for data management and describing how these principles can be applied within data management functional areas; Providing a functional framework for the implementation of enterprise data management practices; including widely adopted practices, methods and techniques, functions, roles, deliverables and metrics; Establishing a common vocabulary for data management concepts and serving as the basis for best practices for data management professionals. DAMA-DMBOK2 provides data management and IT professionals, executives, knowledge workers, educators, and researchers with a framework to manage their data and mature their information infrastructure, based on these principles: Data is an asset with unique properties; The value of data can be and should be expressed in economic terms; Managing data means managing the quality of data; It takes metadata to manage data; It takes planning to manage data; Data management is cross-functional and requires a range of skills and expertise; Data management requires an enterprise perspective; Data management must account for a range of perspectives; Data management is data lifecycle management; Different types of data have different lifecycle requirements; Managing data includes managing risks associated with data; Data management requirements must drive information technology decisions; Effective data management requires leadership commitment."
+}
