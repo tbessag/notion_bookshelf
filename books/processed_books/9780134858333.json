@@ -1,0 +1,13 @@
+{
+  "Title": "SQL Queries for Mere Mortals",
+  "Status": "Not started",
+  "Pages": 960,
+  "Progress": 0,
+  "Author": [
+    "John L. Viescas"
+  ],
+  "Format": "Physical",
+  "ISBN": "9780134858333",
+  "Cover": "http://books.google.com/books/content?id=2LhpswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "Summary": "SQL Queries for Mere Mortals helps new users learn the foundations of SQL queries, and will prove an essential reference guide for intermediate and advanced users. Step by step, John L. Viescas guides you through creating reliable queries for virtually any modern SQL-based database. He demystifies all aspects of SQL query writing, from simple data selection and filtering to joining multiple tables and modifying sets of data."
+}

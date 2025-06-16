@@ -1,0 +1,13 @@
+{
+  "Title": "Designing Data-intensive Applications",
+  "Status": "Not started",
+  "Pages": 590,
+  "Progress": 0,
+  "Author": [
+    "Martin Kleppmann"
+  ],
+  "Format": "Physical",
+  "ISBN": "9781449373320",
+  "Cover": "http://books.google.com/books/content?id=BM7woQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "Summary": "Want to know how the best software engineers and architects structure their applications to make them scalable, reliable, and maintainable in the long term? This book examines the key principles, algorithms, and trade-offs of data systems, using the internals of various popular software packages and frameworks as examples. Tools at your disposal are evolving and demands on applications are increasing, but the principles behind them remain the same. You'll learn how to determine what kind of tool is appropriate for which purpose, and how certain tools can be combined to form the foundation of a good application architecture. You'll learn how to develop an intuition for what your systems are doing, so that you're better able to track down any problems that arise."
+}
