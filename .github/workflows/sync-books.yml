@@ -67,12 +67,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add isbn_input.json books/new_books books/processed_books
-          if ! git diff --cached --exit-code; then
-            git commit -m "chore: persist updated ISBN input and processed lists"
-            git push
-          else
+          if git diff --cached --quiet; then
             echo "No changes to commit."
+          else
+            git commit -m "chore: persist updated ISBN input and processed lists"
+            # Push via PAT instead of GITHUB_TOKEN
+            git push https://x-access-token:${{ secrets.REPO_PAT }}@github.com/${{ github.repository }} HEAD:main
           fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
