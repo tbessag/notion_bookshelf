@@ -3,7 +3,6 @@ name: Daily Notion Backup
 on:
   workflow_dispatch:
   schedule:
-    # every day at 02:00 UTC
     - cron: '0 2 * * *'
 
 jobs:
@@ -15,32 +14,40 @@ jobs:
       NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
 
     steps:
+      # 1) Checkout using your PAT so that git push works
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # tell checkout to use your PAT for all git operations
+          token: ${{ secrets.REPO_PAT }}
+          persist-credentials: true
 
+      # 2) Setup Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Install deps
+      # 3) Install deps
+      - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install notion-client python-dotenv
 
+      # 4) Run your backup script
       - name: Run backup script
         run: python script/backup.py
 
-      - name: Commit & push backup
+      # 5) Commit & push the new backup
+      - name: Commit & Push backup
+        if: ${{ always() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add backups
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: daily backup for $(date -u +'%Y-%m-%d')"
-            git push https://x-access-token:${{ secrets.REPO_PAT }}@github.com/${{ github.repository }} HEAD:main
-          else
+          if git diff --cached --quiet; then
             echo "No changes to commit."
+          else
+            git commit -m "chore: daily backup for $(date -u +'%Y-%m-%d')"
+            git push
           fi
-        env:
-          REPO_PAT: ${{ secrets.REPO_PAT }}
