@@ -1,0 +1,28 @@
+# .github/workflows/sync-books.yml
+name: Sync Books
+
+on:
+  workflow_dispatch:
+    inputs:
+      isbn:
+        description: 'ISBN to add'
+        required: true
+        default: ''
+
+jobs:
+  add-fetch-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Write isbn_input.json
+        run: |
+          jq -n --arg i "${{ github.event.inputs.isbn }}" \
+             '{isbn: [$i] | map(split(",")[]) }' > isbn_input.json
+
+      - name: Fetch metadata & covers
+        run: python scripts/fetch_and_save.py
+
+      - name: Publish to Notion
+        run: python scripts/publish_and_move.py
