@@ -1,0 +1,13 @@
+{
+  "Title": "Data Mesh",
+  "Status": "Not started",
+  "Pages": 270,
+  "Progress": 0,
+  "Author": [
+    "Zhamak Dehghani"
+  ],
+  "Format": "Physical",
+  "ISBN": "9781492092391",
+  "Cover": "http://books.google.com/books/content?id=M5J5zgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "Summary": "Many enterprises are investing in a next-generation data lake, hoping to democratize data at scale to provide business insights and ultimately make automated intelligent decisions. In this practical book, author Zhamak Dehghani reveals that, despite the time, money, and effort poured into them, data warehouses and data lakes fail when applied at the scale and speed of today's organizations. A distributed data mesh is a better choice. Dehghani guides architects, technical leaders, and decision makers on their journey from monolithic big data architecture to a paradigm that draws from modern distributed architecture. A data mesh considers domains as a first-class concern, applies platform thinking to create self-serve data infrastructure, and treats data as a product. This book shows you why and how. Examine the current landscape of data architectures, their underlying characteristics, and failure modes Learn how to divide data (and its supporting technology stacks and architecture) into operational data and analytical data Get a complete introduction to data mesh principles and logical architecture Create a foundation for gaining value from analytical data and historical facts at scale Move beyond a monolithic data lake to a distributed data mesh"
+}

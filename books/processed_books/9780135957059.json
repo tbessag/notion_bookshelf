@@ -1,0 +1,14 @@
+{
+  "Title": "The Pragmatic Programmer",
+  "Status": "Not started",
+  "Pages": 352,
+  "Progress": 0,
+  "Author": [
+    "David Hurst Thomas",
+    "Andrew Hunt"
+  ],
+  "Format": "Physical",
+  "ISBN": "9780135957059",
+  "Cover": "http://books.google.com/books/content?id=sNeFxAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "Summary": "Using anecdotes, analogies, examples and parables, this user-friendly guide offers techniques for getting any programming job done effectively, and can help any programmer improve skills, no matter what level. Incorporates today's top languages, including Java, C, C++, and Perl."
+}

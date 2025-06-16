@@ -1,0 +1,13 @@
+{
+  "Title": "Data Science from Scratch",
+  "Status": "Not started",
+  "Pages": 330,
+  "Progress": 0,
+  "Author": [
+    "Joel Grus"
+  ],
+  "Format": "Physical",
+  "ISBN": "9781491901427",
+  "Cover": "http://books.google.com/books/content?id=7iLNrQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "Summary": "This is a first-principles-based, practical introduction to the fundamentals of data science aimed at the mathematically-comfortable reader with some programming skills. The book covers: The important parts of Python to know The important parts of Math / Probability / Statistics to know The basics of data science How commonly-used data science techniques work (learning by implementing them) What is Map-Reduce and how to do it in Python Other applications such as NLP, Network Analysis, and more"
+}
