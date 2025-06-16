@@ -12,6 +12,12 @@ jobs:
   sync:
     runs-on: ubuntu-latest
 
+    env:
+      NOTION_API_TOKEN:      ${{ secrets.NOTION_API_TOKEN }}
+      NOTION_DATABASE_ID:    ${{ secrets.NOTION_DATABASE_ID }}
+      AUTO_BOOK_TEMPLATE_ID: ${{ secrets.AUTO_BOOK_TEMPLATE_ID }}
+      GITHUB_RAW:            ${{ secrets.GITHUB_RAW }}
+
     steps:
       # 1) Check out the repo without default credentials (we’ll use PAT)
       - name: Checkout
